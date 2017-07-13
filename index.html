@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Kerang</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/vue-material@0.7.4/dist/vue-material.css">
+    <style>
+    .container {
+      width: 50%;
+      margin: auto;
+    }
+    </style>
+    <script src="https://unpkg.com/vue@2.3.4"></script>
+    <script src="https://unpkg.com/vuex@2.3.1"></script>
+    <script src="https://unpkg.com/vue-material@0.7.4"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <md-layout md-align="center" class="container">
+        <h2>Ask the lord magic shell about anything . . </h2>
+        
+        <md-card>
+          <md-card-area>
+            <md-card-media>
+              <img src="https://vignette2.wikia.nocookie.net/spongebob/images/7/78/Club_SpongeBob_10.png/revision/latest?cb=20130406102303" alt="Magic Shell">
+            </md-card-media>
+
+            <md-card-content>
+              You need an answer for your questions, but don't know who to ask. Now, you're in a right place . . .
+              <md-input-container>
+                <label>Ask anything (Y/N Question)</label>
+                <md-input placeholder="Your Question"></md-input>
+              </md-input-container>
+            </md-card-content>
+          </md-card-area>
+
+          <md-card-actions>
+            <md-button class="md-raised md-primary">Ask Lord Magic Shell</md-button>
+          </md-card-actions>
+        </md-card>
+      </md-layout>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
