@@ -23,27 +23,56 @@
       <md-layout md-align="center" class="container">
         <h2>Ask the lord magic shell about anything . . </h2>
         
-        <md-card>
+        <md-card v-if="answeredQuestion === null">
           <md-card-area>
-            <md-card-media>
+            <md-card-media v-if="!loading">
               <img src="https://vignette2.wikia.nocookie.net/spongebob/images/7/78/Club_SpongeBob_10.png/revision/latest?cb=20130406102303" alt="Magic Shell">
+            </md-card-media>
+            <md-card-media v-else md-align="center">
+              <md-spinner :md-size="300" :md-stroke="1" md-indeterminate></md-spinner>
             </md-card-media>
 
             <md-card-content>
               You need an answer for your questions, but don't know who to ask. Now, you're in a right place . . .
               <md-input-container>
                 <label>Ask anything (Y/N Question)</label>
-                <md-input placeholder="Your Question"></md-input>
+                <md-input placeholder="Your Question" v-model="question" @keyup.enter="submitQuestion"></md-input>
               </md-input-container>
             </md-card-content>
           </md-card-area>
 
           <md-card-actions>
-            <md-button class="md-raised md-primary">Ask Lord Magic Shell</md-button>
+            <md-button class="md-raised md-primary" @click="submitQuestion">Ask Lord Magic Shell</md-button>
           </md-card-actions>
         </md-card>
+
+        <md-card v-else>
+          <md-card-header>
+            <md-card-header-text>
+              <div class="md-title">Lord Magic Shell Says . . . {{answerData.answer}}</div>
+            </md-card-header-text>
+          </md-card-header>
+
+          <md-card-media>
+            <img :src="answerData.image" :alt="answerData.answer">
+          </md-card-media>
+
+          <md-card-actions>
+            <md-button class="md-raised md-primary" @click="reset">Okay!</md-button>
+          </md-card-actions>
+        </md-card>
+
       </md-layout>
+      <md-dialog-alert
+        :md-title="confirm.title"
+        :md-content-html="confirm.contentHtml"
+        :md-ok-text="confirm.ok"
+        @open="onOpen"
+        @close="onClose"
+        ref="hail">
+      </md-dialog-alert>
     </div>
+    <script src="store.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
